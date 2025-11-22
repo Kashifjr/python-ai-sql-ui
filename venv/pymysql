@@ -1,0 +1,17 @@
+'''
+The progam will allow users to connect to a MySQL database using python as a 
+database connector and using the command line interface. Users will be able to 
+edit, insert, delete, view and update records in the database.
+'''
+
+# connect to the database using pymysql
+# generate menu and user options
+# generate functions for each option
+    # insert record
+    # view records
+    # update record
+    # delete record
+    # exit program
+# enter loop for user to select options until they choose to exit
+# display menu options
+# get user input
