@@ -88,23 +88,26 @@ def quit_program():
 # get table data for gui
 def get_table_data():
     cursor.execute("SELECT * FROM rc_cars")
-    conn.commit()
-    return cursor.fetchall()
+    table = cursor.fetchall()
+    return table
 # enter loop for user to select options until they choose to exit
-while True:
-    # display menu options
-    display_menu()
-    choice = input("Choose and action to perform: ")
-    if choice == '1':
-        insert_record()
-    elif choice == '2':
-        view_records()
-    elif choice == '3':
-        update_record()
-    elif choice == '4':
-        delete_record()
-    elif choice == 'q':
-        quit_program()
-    else:
-        print("Invalid option. Please try again.\n")
-# get user input
+# This block only runs if you execute main.py directly
+if __name__ == "__main__":
+    while True:
+        # display menu options
+        display_menu()
+        choice = input("Choose and action to perform: ")
+        if choice == '1':
+            insert_record()
+        elif choice == '2':
+            view_records()
+        elif choice == '3':
+            update_record()
+        elif choice == '4':
+            delete_record()
+        elif choice == 'q':
+            get_table_data()  # debug call
+            quit_program()
+        else:
+            print("Invalid option. Please try again.\n")
+    # get user input

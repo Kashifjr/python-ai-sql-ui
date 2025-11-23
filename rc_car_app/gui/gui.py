@@ -30,8 +30,8 @@ label2.pack(pady=20)
 # Add a button
 def view_button():
     global table_visible
-    if not table_visible:
-        #load_data()
+    if not table_visible:    
+        load_data()
         table.pack(fill=tk.BOTH, expand=True)
         table_visible = True
     else:
@@ -45,5 +45,9 @@ button2.pack()
 button3 = tk.Button(root, text="Delete Car")
 button3.pack()
 
-# Run the application
-root.mainloop()
+def start_gui():
+    # setup Tkinter window, widgets, etc.
+    root.mainloop()
+
+if __name__ == "__main__":
+    start_gui()
