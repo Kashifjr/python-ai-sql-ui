@@ -85,6 +85,11 @@ def quit_program():
     cursor.close()
     conn.close()
     exit()
+# get table data for gui
+def get_table_data():
+    cursor.execute("SELECT * FROM rc_cars")
+    conn.commit()
+    return cursor.fetchall()
 # enter loop for user to select options until they choose to exit
 while True:
     # display menu options
