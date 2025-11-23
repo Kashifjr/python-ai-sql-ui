@@ -50,7 +50,7 @@ def insert_record():
     price = float(input("Enter car price: "))
     cursor.execute("INSERT INTO rc_cars (brand, model, price) VALUES (%s, %s, %s)", (brand, model, price))
     conn.commit()
-    print("Record inserted successfully.\n")
+    print("The record \""+brand+" "+model+"\" was inserted successfully.\n")
 # view records
 def view_records():
     cursor.execute("SELECT * FROM rc_cars")
@@ -72,7 +72,13 @@ def update_record():
     print("Record updated successfully.\n")
 # delete record
 def delete_record():
-    pass # to be implemented
+    view_records()
+    car_id = int(input("Enter the ID of the car to delete: "))
+    cursor.execute("DELETE FROM rc_cars WHERE id=%s", (car_id,))
+    conn.commit()
+    print("Record deleted successfully.\n")
+    print("Current Records after deletion:")
+    view_records()
 # exit program
 def quit_program():
     print("Exiting program.")
@@ -91,7 +97,7 @@ while True:
     elif choice == '3':
         update_record()
     elif choice == '4':
-        pass # delete_record() function to be implemented
+        delete_record()
     elif choice == 'q':
         quit_program()
     else:
