@@ -51,6 +51,9 @@ def insert_record():
     cursor.execute("INSERT INTO rc_cars (brand, model, price) VALUES (%s, %s, %s)", (brand, model, price))
     conn.commit()
     print("The record \""+brand+" "+model+"\" was inserted successfully.\n")
+def gui_insert_record(brand, model, price):
+    cursor.execute("INSERT INTO rc_cars (brand, model, price) VALUES (%s, %s, %s)", (brand, model, price))
+    conn.commit()
 # view records
 def view_records():
     cursor.execute("SELECT * FROM rc_cars")
@@ -59,6 +62,7 @@ def view_records():
     for row in records:
         print(f"ID: {row[0]}, Brand: {row[1]}, Model: {row[2]}, Price: ${row[3]}")
     print()
+    return records
     # print(row)
 # update record
 # search for car model by id or model and name combo?
@@ -86,10 +90,7 @@ def quit_program():
     conn.close()
     exit()
 # get table data for gui
-def get_table_data():
-    cursor.execute("SELECT * FROM rc_cars")
-    table = cursor.fetchall()
-    return table
+
 # enter loop for user to select options until they choose to exit
 # This block only runs if you execute main.py directly
 if __name__ == "__main__":
@@ -106,7 +107,6 @@ if __name__ == "__main__":
         elif choice == '4':
             delete_record()
         elif choice == 'q':
-            get_table_data()  # debug call
             quit_program()
         else:
             print("Invalid option. Please try again.\n")
